@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+<br>
+<h1>Liste des cartes</h1>
+<br>
+
+<table class="table table-bordered table-striped" style = "width: 75%; margin: auto;">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Strike</th>
+        <th scope="col">Attack</th>
+        <th scope="col">HP</th>
+        <th scope="col">Category</th>
+        <th scope="col">Creator</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for card in cardList %}
+            <tr>
+                <td scope="row">{{ card.name }}</td> 
+                <td scope="row">{{ card.strike }}</td>
+                <td scope="row">{{ card.attack }}</td> 
+                <td scope="row">{{ card.hp }}</td> 
+                <td scope="row">{{ card.category.name }}</td>
+                {% if card.getUser is not empty %}
+                    <td scope="row">{{ card.getUser.name }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

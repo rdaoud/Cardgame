@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<style>
+.container{
+    width: 75%;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+</style>
+
+<br> 
+<h1>Créer une catégorie</h1>
+
+<div class = "container">
+{{ form(form) }}
+</div>
+{% endblock %}

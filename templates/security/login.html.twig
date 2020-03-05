@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+<style>
+
+body{
+    background-color: #1E90FF; 
+}
+form {
+    margin : 15px;
+}
+
+.container {
+    background-color: orange;
+    display: block; 
+    margin: auto; 
+    width: 50%;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+</style>
+
+<div class = "container">
+<form method="post">
+    
+
+    <h1 class="h3 mb-3 font-weight-normal"><strong>Please sign in</strong></h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+    <br>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <br>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+</form>
+</div>
+{% endblock %}

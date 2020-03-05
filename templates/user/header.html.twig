@@ -1,0 +1,113 @@
+
+<style>
+
+body {
+    margin : 0;
+}
+
+thead, tbody{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.table {
+    width:75%;
+    margin: auto;
+}
+
+.container{
+    width: 75%;
+}
+
+.deco{
+    background-color: red; 
+    color: white; 
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    float: right; 
+    margin-right 5px;
+}
+
+.deco:hover {
+    text-decoration: none;
+    color: white!important;
+    background-color: orange;
+    transition: 0.3s;
+}
+
+.header{
+    display: flex; 
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: white !important;
+}
+
+a:hover{
+    color: orange !important; 
+}
+
+
+.link{
+    display: flex;
+}
+
+.navbar{
+    background-color: black;
+    color: white;
+}
+
+.navbar-toggler-icon{
+    display: flex;
+}
+
+.toggle {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+.nav-item:hover{
+    cursor: pointer; 
+    color: blue;
+}
+
+</style>
+
+<nav class="navbar navbar-expand-lg ">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class = "toggle"></div>
+    <div class = "toggle"></div>
+    <div class = "toggle"></div>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/user">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link card-link" >Cards</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link create-card-link" >Create Card</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link category-link">Category</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link create-category-link">Create Category</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <a href = "/logout" class = "deco">Log Out</a>
+    </form>
+  </div>
+</nav>

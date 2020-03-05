@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+{% include 'user/header.html.twig' %}
+
+
+<Container>
+<br>
+
+<h1> {{ app.user.name }}</h1>
+
+
+
+</Container>
+{% endblock %}
+{% block javascripts %}
+
+<script>
+            $(document).ready(function(){
+                $(".card-link").click(function(e){
+                    e.preventDefault();
+                    $.ajax({url: "/card", success: function(result){
+                            $("Container").html(result);
+                        }});
+                });
+                $(".category-link").click(function(e){
+                    e.preventDefault();
+                    $.ajax({url: "/category", success: function(result){
+                            $("Container").html(result);
+                        }});
+                });
+                $(".create-card-link").click(function(e){
+                    e.preventDefault();
+                    $.ajax({url: "/create-card", success: function(result){
+                            $("Container").html(result);
+                        }});
+                });
+                $(".create-category-link").click(function(e){
+                    e.preventDefault();
+                    $.ajax({url: "/create-category", success: function(result){
+                            $("Container").html(result);
+                        }});
+                });
+            });
+        </script>
+{% endblock %}
