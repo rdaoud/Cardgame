@@ -7,6 +7,6 @@
 <h1>Créer une carte</h1>
 <br> 
 <div class = "container">
-{{ form(form) }}
+{{ form(form, {'action': path(app.request.get('_route')), 'method': 'POST'}) }}
 </div>
 {% endblock %}

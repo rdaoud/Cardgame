@@ -25,6 +25,12 @@ class CategoryController extends AbstractController
             'categoryList' => $categoryList,
             ]);
     }
+    /**
+     * @Route("/user", name="user")
+     */
+    public function user(){
+        return $this->render('user/index.html.twig');
+    }
 
     /**
      * @Route("/create-category", name="create-category")
@@ -37,7 +43,7 @@ class CategoryController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
             $entityManager->flush();       
-            return $this->redirectToRoute('category');
+            return $this->redirectToRoute('user');
         }
         return $this->render('category/form.html.twig', ['form' => $form->createView(),]);
     }
