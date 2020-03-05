@@ -8,31 +8,24 @@
 <h1>Liste des cartes</h1>
 <br>
 
-<table class="table table-bordered table-striped" style = "width: 75%; margin: auto;">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Strike</th>
-        <th scope="col">Attack</th>
-        <th scope="col">HP</th>
-        <th scope="col">Category</th>
-        <th scope="col">Creator</th>
-    </tr>
-    </thead>
-    <tbody>
-        {% for card in cardList %}
-            <tr>
-                <td scope="row">{{ card.name }}</td> 
-                <td scope="row">{{ card.strike }}</td>
-                <td scope="row">{{ card.attack }}</td> 
-                <td scope="row">{{ card.hp }}</td> 
-                <td scope="row">{{ card.category.name }}</td>
-                {% if card.getUser is not empty %}
-                    <td scope="row">{{ card.getUser.name }}</td>
-                {% endif %}
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+
+<div class = "container" style = "display: flex; flex-wrap: wrap;">
+{% for card in cardList %}
+<div class="card" style="width: 18rem; margin-left: 5%; background-color: black; color: white;">
+<h2 style = "text-align: center;"><strong>{{ card.name }}</strong></h2>
+    <p style = "text-align: center;">by {{ card.getUser.name }}</p>
+  <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSz3oe7au6Voj7bwkAdVqEhbemBlvOSDNsybGBb-1nN_q4gPhB3" alt="Card image cap">
+  <div class="card-body">
+    <h3 style = "text-align: center;" class="card-text">{{ card.category.name }}</h3><br>
+    <div class = "stats" style = "text-align: center;">
+        <p id = "attack">{{ card.attack }}</p>
+        <p id = "strike">{{ card.strike }}</p>
+        <p id = "pv">{{ card.hp }}</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+
 
 {% endblock %}

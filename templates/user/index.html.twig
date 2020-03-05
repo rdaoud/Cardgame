@@ -44,6 +44,21 @@
                             $("Container").html(result);
                         }});
                 });
+                $('#pageContent').on('submit','form', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        $.ajax({
+            type: "POST",
+            url: form.attr('action'),
+            data: new formData(this),
+            contentType: false,
+            processData: false,
+            success: function success(response) {
+                $('#pageContent').load($('.active').attr('href'));
+            }
+
+        })
+    });
             });
         </script>
 {% endblock %}
