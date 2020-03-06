@@ -11,11 +11,10 @@
 
 <div class = "container" style = "display: flex; flex-wrap: wrap;">
 {% for card in cardList %}
-<div class="card" style="width: 18rem; margin-left: 5%; background-color: black; color: white;">
+<div class="card" style="width: 18rem; margin-left: 5%; margin-bottom: 5%; background-color: #696969; color: white;">
 <h2 style = "text-align: center;"><strong>{{ card.name }}</strong></h2>
     <p style = "text-align: center;">by {{ card.getUser.name }}</p>
-  <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSz3oe7au6Voj7bwkAdVqEhbemBlvOSDNsybGBb-1nN_q4gPhB3" alt="Card image cap">
-  <div class="card-body">
+<div class="card-img-top" style="height: 250px;background-image: url({%  if card.image %}{{ asset('uploads/cards/' ~ card.image) }}{% else %}{{ 'https://www.arras-info.fr/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png' }}{% endif %})"></div>  <div class="card-body">
     <h3 style = "text-align: center;" class="card-text">{{ card.category.name }}</h3><br>
     <div class = "stats" style = "text-align: center;">
         <p id = "attack">{{ card.attack }}</p>

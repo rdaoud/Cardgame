@@ -42,10 +42,18 @@ class CardController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $card->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
+            $image = $form->get('image')->getData();
+            $imageName = 'card-'.uniqid().'.'.$image->guessExtension();
+            $image->move(
+                $this->getParameter('cards_folder'),
+                $imageName
+            );
+            $card->setImage($imageName);
             $entityManager->persist($card);
             $entityManager->flush();       
             return $this->redirectToRoute('user');
         }
         return $this->render('card/form.html.twig', ['form' => $form->createView(),]);
     }
+    
 }

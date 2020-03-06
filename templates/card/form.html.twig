@@ -9,6 +9,6 @@
 
 
 <div class = "container">
-{{ form(form, {'action': path(app.request.get('_route')), 'method': 'POST'}) }}
+{{ form(form, {'action': path(app.request.get('_route')), 'method': 'POST', 'enctype':'multipart/form-data'}) }}
 </div>
 {% endblock %}

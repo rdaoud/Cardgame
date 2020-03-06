@@ -3,62 +3,47 @@
 
 
 {% block body %}
-
+ 
+<div class = "container_main">
 {% include 'user/header.html.twig' %}
 
-
-<Container>
+<div id = "content">
 <br>
 
 <h1> {{ app.user.name }}</h1>
 
-
-
-</Container>
+</div>
+</div>
 {% endblock %}
 {% block javascripts %}
 
 <script>
             $(document).ready(function(){
-                $(".card-link").click(function(e){
-                    e.preventDefault();
-                    $.ajax({url: "/card", success: function(result){
-                            $("Container").html(result);
-                        }});
-                });
-                $(".category-link").click(function(e){
-                    e.preventDefault();
-                    $.ajax({url: "/category", success: function(result){
-                            $("Container").html(result);
-                        }});
-                });
-                $(".create-card-link").click(function(e){
-                    e.preventDefault();
-                    $.ajax({url: "/create-card", success: function(result){
-                            $("Container").html(result);
-                        }});
-                });
-                $(".create-category-link").click(function(e){
-                    e.preventDefault();
-                    $.ajax({url: "/create-category", success: function(result){
-                            $("Container").html(result);
-                        }});
-                });
-                $('#pageContent').on('submit','form', function (e) {
-        e.preventDefault();
-        var form = $(this);
-        $.ajax({
-            type: "POST",
-            url: form.attr('action'),
-            data: new formData(this),
-            contentType: false,
-            processData: false,
-            success: function success(response) {
-                $('#pageContent').load($('.active').attr('href'));
+              $('nav ul a').click(function (e){
+            e.preventDefault();
+            $('nav a').removeClass('active');
+            $(this).addClass('active');
+            if (e.target.pathname == "/user"){
+                $(".container_main").load($(this).attr('href'))
+            } else {
+                $("#content").load($(this).attr('href'))
             }
+        });
+                $('#content').on('submit','form', function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    $.ajax({
+                        type: "POST",
+                        url: form.attr('action'),
+                        data: new FormData(this),
+                        contentType: false,
+                        processData: false,
+                        success: function success(response) {
+                            $('#content').load($('.active').attr('href'));
+                        }
 
-        })
-    });
+                    })
+                });
             });
         </script>
 {% endblock %}
