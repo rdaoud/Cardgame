@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,7 +26,7 @@ class Card
     /**
      * @ORM\Column(type="integer")
      */
-    private $strike;
+    private $mana;
 
     /**
      * @ORM\Column(type="integer")
@@ -52,6 +54,16 @@ class Card
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Deck", mappedBy="card")
+     */
+    private $decks;
+
+    public function __construct()
+    {
+        $this->decks = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -70,14 +82,14 @@ class Card
         return $this;
     }
 
-    public function getStrike(): ?int
+    public function getMana(): ?int
     {
-        return $this->strike;
+        return $this->mana;
     }
 
-    public function setStrike(int $strike): self
+    public function setMana(int $mana): self
     {
-        $this->strike = $strike;
+        $this->mana = $mana;
 
         return $this;
     }
@@ -138,6 +150,37 @@ class Card
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Deck[]
+     */
+    public function getDecks(): Collection
+    {
+        return $this->decks;
+    }
+
+    public function addDeck(Deck $deck): self
+    {
+        if (!$this->decks->contains($deck)) {
+            $this->decks[] = $deck;
+            $deck->setCard($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDeck(Deck $deck): self
+    {
+        if ($this->decks->contains($deck)) {
+            $this->decks->removeElement($deck);
+            // set the owning side to null (unless already changed)
+            if ($deck->getCard() === $this) {
+                $deck->setCard(null);
+            }
+        }
 
         return $this;
     }

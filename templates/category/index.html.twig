@@ -3,11 +3,11 @@
 
 {% block body %}
 
-<h1>Liste des catégories</h1>
+<h1>Catagories list</h1>
 
 <ul>
 {% for category in categoryList %}
-<li>{{ category.name }} </li>
+<li>{{ category.name }}  <a class = "btn btn-danger" href = "#">Supprimer</a> </li> 
 {% endfor %}
 </ul>
 

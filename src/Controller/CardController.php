@@ -16,6 +16,7 @@ class CardController extends AbstractController
     public function __construct(CardRepository $cardRepository){
         $this->cardRepository = $cardRepository;
     }
+
     /**
      * @Route("/card", name="card")
      */
@@ -25,6 +26,7 @@ class CardController extends AbstractController
             'cardList' => $cardList,
             ]);
     }
+    
     /**
      * @Route("/user", name="user")
      */
@@ -55,5 +57,34 @@ class CardController extends AbstractController
         }
         return $this->render('card/form.html.twig', ['form' => $form->createView(),]);
     }
-    
+
+    /**
+    * @Route("/card_profile/{id}", name="card_update")
+    */
+    public function showCard(int $id, Request $request){
+        $card = $this->cardRepository->find($id);
+        $form = $this->createForm(CardType::class, $card);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManger = $this->getDoctrine()->getManager();
+            $entityManger->persist($card);
+            $entityManger->flush();
+            $this->addFlash('notification', "La carte a bien été modifié !");
+        }
+        return $this->render('card/card_profile.html.twig', [
+            'card' => $card,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/delete_card/{id}", name="delete_card")
+    */
+    public function deleteCard(Card $card){
+        $entityManger = $this->getDoctrine()->getManager();
+        $entityManger->remove($card);
+        $entityManger->flush();
+        return $this->redirectToRoute("user");
+    }
 }
+    

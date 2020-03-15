@@ -5,24 +5,29 @@
 {% block body %}
 
 <br>
-<h1>Liste des cartes</h1>
+<h1>Cards list</h1>
 <br>
 
 
 <div class = "container" style = "display: flex; flex-wrap: wrap;">
-{% for card in cardList %}
-<div class="card" style="width: 18rem; margin-left: 5%; margin-bottom: 5%; background-color: #696969; color: white;">
-<h2 style = "text-align: center;"><strong>{{ card.name }}</strong></h2>
-    <p style = "text-align: center;">by {{ card.getUser.name }}</p>
-<div class="card-img-top" style="height: 250px;background-image: url({%  if card.image %}{{ asset('uploads/cards/' ~ card.image) }}{% else %}{{ 'https://www.arras-info.fr/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png' }}{% endif %})"></div>  <div class="card-body">
-    <h3 style = "text-align: center;" class="card-text">{{ card.category.name }}</h3><br>
-    <div class = "stats" style = "text-align: center;">
-        <p id = "attack">{{ card.attack }}</p>
-        <p id = "strike">{{ card.strike }}</p>
-        <p id = "pv">{{ card.hp }}</p>
+    {% for card in cardList %}
+    <div class="card" style="width: 18rem; margin-left: 5%; margin-bottom: 5%; background-color: #696969; color: white;">
+        <h2 style = "text-align: center;"><strong>{{ card.name }}</strong></h2>
+        <p style = "text-align: center;">by {{ card.getUser.name }}</p>
+        <div class="card-img-top" style="height: 250px;background-image: url({%  if card.image %}{{ asset('uploads/cards/' ~ card.image) }}{% else %}{{ 'https://www.arras-info.fr/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png' }}{% endif %})"></div>  <div class="card-body">
+            <h3 style = "text-align: center;" class="card-text">{{ card.category.name }}</h3><br>
+            <div class = "stats" style = "text-align: center;">
+                <p id = "attack" title="Attack">{{ card.attack }}</p>
+                <p id = "strike" title="Mana">{{ card.mana }}</p>
+                <p id = "pv" title="Life">{{ card.hp }}</p>
+            </div>
+            <br>
+            <div>
+                <a href="#" class="btn btn-primary">Modifier</a>
+                <a class="btn btn-danger" style = "float: right;" href="#">Supprimer</a>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 {% endfor %}
 </div>
 

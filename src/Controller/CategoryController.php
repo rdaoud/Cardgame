@@ -47,4 +47,14 @@ class CategoryController extends AbstractController
         }
         return $this->render('category/form.html.twig', ['form' => $form->createView(),]);
     }
+
+    /**
+     * @Route("/delete_caregory/{id}", name="delete_category")
+    */
+    public function deleteCategory(Category $category){
+        $entityManger = $this->getDoctrine()->getManager();
+        $entityManger->remove($category);
+        $entityManger->flush();
+        return $this->redirectToRoute("user");
+    }
 }

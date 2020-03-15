@@ -15,12 +15,12 @@ h1{
 </style>
 
 <br> 
-<h1>Créer une catégorie</h1>
+<h1>Create a category</h1>
 
 <div class = "container">
-{{ form_start(form, {'action': path(app.request.get('_route')), 'method': 'POST', 'enctype':'multipart/form-data'}) }}
-<label class = "col-form-label col-md-11"style ="display: inline-block;"> {{ form_row(form.name) }} </label><br>
-{{ form_end(form) }}
-
+    {{ form_start(form, {'action': path(app.request.get('_route')), 'method': 'POST', 'enctype':'multipart/form-data'}) }}
+        <label class = "col-form-label col-md-11"style ="display: inline-block;"> {{ form_row(form.name) }} </label><br>
+    {{ form_end(form) }}
 </div>
+
 {% endblock %}

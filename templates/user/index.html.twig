@@ -18,8 +18,8 @@
 {% block javascripts %}
 
 <script>
-            $(document).ready(function(){
-              $('nav ul a').click(function (e){
+    $(document).ready(function(){
+        $('nav ul a').click(function (e){
             e.preventDefault();
             $('nav a').removeClass('active');
             $(this).addClass('active');
@@ -29,21 +29,21 @@
                 $("#content").load($(this).attr('href'))
             }
         });
-                $('#content').on('submit','form', function (e) {
-                    e.preventDefault();
-                    var form = $(this);
-                    $.ajax({
-                        type: "POST",
-                        url: form.attr('action'),
-                        data: new FormData(this),
-                        contentType: false,
-                        processData: false,
-                        success: function success(response) {
-                            $('#content').load($('.active').attr('href'));
-                        }
+        $('#content').on('submit','form', function (e) {
+            e.preventDefault();
+            var form = $(this);
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function success(response) {
+                $('#content').load($('.active').attr('href'));
+                }
+            })
+        });
+    });
+</script>
 
-                    })
-                });
-            });
-        </script>
 {% endblock %}

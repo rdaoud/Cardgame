@@ -20,7 +20,7 @@ class CardType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('strike', IntegerType::class)
+            ->add('mana', IntegerType::class)
             ->add('attack', IntegerType::class)
             ->add('hp', IntegerType::class)
             ->add('category', EntityType::class, [
