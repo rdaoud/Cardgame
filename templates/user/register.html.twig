@@ -3,15 +3,5 @@
 {% block body %}
 <h1 style = "text-align: center;">Registration</h1>
 <br>
-{{ form_start(form) }}
-<div style = "display: block; margin: auto;">
-    <label class = "col-form-label col-md-11"style ="display: inline-block;"> {{ form_row(form.title) }} </label><br>
-    <label class = "col-form-label col-md-11"style ="display: inline-block;"> {{ form_row(form.strike) }} </label><br>
-    <label class = "col-form-label col-md-11"style ="display: inline-block;"> {{ form_row(form.attack) }} </label><br>
-    <label class = "col-form-label col-md-11"style ="display: inline-block;"> {{ form_row(form.hp) }} </label><br>
-    <label class = "col-form-label col-md-11"style ="display: inline-block;"> {{ form_row(form.category.name) }} </label><br>
-    <button style = "display: block; margin: auto;" type = "submit" class = "btn btn-success">Register</button>
-</div>
-{{ form_end(form) }}
-
+{{form(form)}}
 {% endblock %}
